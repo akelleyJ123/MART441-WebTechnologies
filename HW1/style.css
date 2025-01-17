@@ -1,0 +1,71 @@
+body {
+    background-image: url(../HW1/imgs/IMG_0265.JPG);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.head {
+    text-align: center;
+    font-size: 200%;
+    margin: auto;
+    margin-top: 9%;
+    width: 50%;
+    padding: 10%;
+    border-radius: 25px;
+    background-color: rgba(64, 55, 61, .7);
+    color: #CCD9D7;
+}
+
+.head:hover{
+    background-color: rgba(64, 55, 61, .8);
+}
+
+.info {
+    text-align: center;
+    font-size: 200%;
+    margin: auto;
+    margin-top: 15%;
+    width: 50%;
+    padding: 5%;
+    border-radius: 25px;
+    background-color: rgba(64, 55, 61, .7);
+    color: #CCD9D7;
+}
+
+.info:hover {
+    background-color: rgba(64, 55, 61, .8);
+}
+
+h4 {
+    color: white;
+}
+
+.interest {
+    text-align: center;
+    font-size: 200%;
+    margin: auto;
+    margin-top: 15%;
+    margin-bottom: 6%;
+    width: 50%;
+    padding: 5%;
+    border-radius: 25px;
+    background-color: rgba(64, 55, 61, .7);
+    color: #CCD9D7;
+}
+
+.interest:hover {
+    background-color: rgba(64, 55, 61, .8);
+}
+
+a {
+    text-decoration: none;
+    color: #F2BE5C;
+    padding: 1%;
+    border-radius: 5px;
+}
+
+a:hover {
+    background-color: #2A401A;
+}
