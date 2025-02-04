@@ -1,17 +1,12 @@
 body {
-    background-image: url(./images/forest.jpg);
-    background-size: 100%;
-}
-
-#hike {
-    color: green;
-}
-
-.story {
-    color: white;
-    background-color: rgba(1, 1, 1, .5);
-    width: 50%;
-    margin: auto;
-    margin-top: 25%;
     text-align: center;
+    color: white;
+    background-color: rgba(1, 1, 1, .8);
+    font-family: Macondo-Regular;
 }
+button {
+    color: white;
+    background-color: red;
+    font-family: Macondo-Regular;
+}
+

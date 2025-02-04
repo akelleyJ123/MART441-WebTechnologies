@@ -5,18 +5,84 @@
         <meta lang="en">
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" type="text/css" href="/HW3/style.css">
+        <link rel="stylesheet" type="text/css" href="/fonts.css">
+        <link rel="stylesheet" type="text/css" href="/style.css">
     </head>
     <body>
-        <div class="story">
-            <h1 id="choice-1">Take a <span id="hike" onclick="beginGame()">Hike</span></h1>
+        <div class="body">
+            <h1>The house</h1>
+            <img id="image" src="/images/front_door.jpg" style="width: 40%; height: auto;">
+            <br>
+            <p id="body">
+                You climb the front steps of the house. A wave of fear washes over you as you walk up 
+                to the dark front doorway, its weathered door already open as if you are being invited in.
+                <br>The small split-level entryway looms in front of you, one staircase going up and another going down.
+                <br>Which one do you take?
+            </p>
+            <br>
+            <button onclick="yourChoice('up')">Go up</button>
+            <button onclick="yourChoice('down')">Go down</button>
         </div>
         <script>
-            function beginGame() {
-                var hike = true;
-                if (hike == true){
-                    document.getElementById("choice-1").innerHTML = "You get to the trailhead, do you take the"
+            function yourChoice(choice){
+                let bodyText = document.getElementById("body");
+
+                if (choice == "up"){
+                    bodyText.innerHTML = `You decide to go upstairs. The stairs creak under your weight as you climb.
+                    <br>You seem to climb for much longer than should have been possible in such a small house.
+                    <br>You attempt to push the strange stairs out of your mind as you finally reach the second floor.
+                    You find yourself standing in front of a hallway with one door on either side. <br>Do you open the 
+                    door on the left or right?`
+                    document.body.innerHTML += '<button onclick="takeLeft()">Left</button>';
+                    document.body.innerHTML += '<button onclick="takeRight()">Right</button';
+                    document.getElementById("image").src = "/images/stairs.jpg";
                 }
+                else if (choice == "down"){
+                    bodyText.innerHTML = `You decide to go downstairs and emerge into a dirty kitchen.
+                    Dirty dishes litter the sink and counters. <br>As you begin to explore the kitchen, you
+                    hear a faint noise from the next room over. <br>You listen hard and can just barely make
+                    out the quiet whimpering of a small child. <br>This house has been abandoned for several
+                    decades so nobody should be here. <br>Do you investigate the sound just incase someone is 
+                    in trouble, or do you run the other way?`
+                    document.body.innerHTML += '<button onclick="investigate()">Investigate</button>';
+                    document.body.innerHTML += '<button onclick="runAway()">Run away</button>';
+                    document.getElementById("image").src = "/images/kitchen.jpg";
+                }
+            }
+            function takeLeft(){
+                document.getElementById("body").innerHTML = `You walk up to the door on the left, 
+                cautiously grabbing the door handle and turning. <br>The second you open the door, a rush
+                of freezing wind hits you and your vision dims. <br>You feel yourself slipping into 
+                unconsciousness and attempt to fight it to no avail. <br>Right before your vision goes dark,
+                you see a dark figure smiling at you from the other side of the room. <h1>Game Over</h1>`
+                document.getElementById("image").src = "/images/dark_door.jpg";
+            }
+            function takeRight(){
+                document.getElementById("body").innerHTML = `You decide to try the door on the right. You begin
+                to reach for the door handle, but quickly pull your hand away as you hear a bloodcurdling 
+                scream from the other side. <br>You're not taking any chances with whatever the hell that was
+                and you turn around, running down the stairs that are suddenly much shorter than when you went up.
+                <br>You once again try to forget about the strange stairs and burst through the front door out onto
+                the street. <br>Turning around you see a dark figure in the window of the right room. <h1>You escaped the house!</h1>`
+                document.getElementById("image").src = "/images/door.jpg";
+            }
+            function investigate(){
+                document.getElementById("body").innerHTML = `Against you better judgement, you decide
+                to make sure whoever is crying is ok. <br>You take a few very cautious steps into the living
+                room when you notice a dark figure in the corner of the room. <br>As you look at this figure,
+                your fear is suddenly replaced with comfort. <br>You can't remember why you came to the house
+                in the first place, but it doesn't matter. You slowly walk into the room and sit down on 
+                the couch. <br>As the darkness slowly takes your vision, you smile knowing that you never have
+                to leave. <h1>Game Over</h1>`
+                document.getElementById("image").src = "/images/living.jpg";
+            }
+            function runAway(){
+                document.getElementById("body").innerHTML = `There's no way you are going to see who's crying.
+                <br>This house has been abandoned for decades so whatever is in the other room is not a person.
+                <br>You decide that you've had enough for the night and turn toward the stairs. <br>Reaching the entryway,
+                you throw open the front door and run out onto the street. <h1>You escaped the house!</h1>`
+                document.getElementById("image").src = "/images/door.jpg";
+                
             }
         </script>
     </body>
