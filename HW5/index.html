@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Memory Game</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" type="text/css" href="./styles/fonts.css">
+        <link rel="stylesheet" type="text/css" href="./styles/style.css">
+    </head>
+    <body>
+        <div class="tableBody">
+            <div class="tableRow">
+                <div class="tableCell"><img src="./images/Record.png" id="image0" width="150px" height="150px" onclick="flipImage(0)"></div>
+                <div class="tableCell"><img src="./images/Record.png" id="image1" width="150px" height="150px" onclick="flipImage(1)"></div>
+                <div class="tableCell"><img src="./images/Record.png" id="image2" width="150px" height="150px" onclick="flipImage(2)"></div>
+            </div>
+            <div class="tableRow">
+                <div class="tableCell"><img src="./images/Record.png" id="image3" width="150px" height="150px" onclick="flipImage(3)"></div>
+                <div class="tableCell"><img src="./images/Record.png" id="image4" width="150px" height="150px" onclick="flipImage(4)"></div>
+                <div class="tableCell"><img src="./images/Record.png" id="image5" width="150px" height="150px" onclick="flipImage(5)"></div>
+            </div>
+            <div class="tableRow">
+                <div class="tableCell"><img src="./images/Record.png" id="image6" width="150px" height="150px" onclick="flipImage(6)"></div>
+                <div class="tableCell"><img src="./images/Record.png" id="image7" width="150px" height="150px" onclick="flipImage(7)"></div>
+                <div class="tableCell"><img src="./images/Record.png" id="image8" width="150px" height="150px" onclick="flipImage(8)"></div>
+            </div>
+            <div class="tableRow">
+                <div class="tableCell"><img src="./images/Record.png" id="image9" width="150px" height="150px" onclick="flipImage(9)"></div>
+                <div class="tableCell"><img src="./images/Record.png" id="image10" width="150px" height="150px" onclick="flipImage(10)"></div>
+                <div class="tableCell"><img src="./images/Record.png" id="image11" width="150px" height="150px" onclick="flipImage(11)"></div>
+            </div>
+        </div>
+        <br>
+        <div class="gameTitle">
+            <h1>Music Match</h1>
+        </div>
+        <script>
+            var imageNum = ["image0","image1","image2","image3","image4","image5","image6","image7","image8","image9","image10","image11"];
+            var blankImg = "./images/Record.png";
+            var realImages = new Array();
+
+            function showBlankImg() {
+                randomImageArray();
+                for(var i = 0; i < imageNum.length; i++){
+                    document.getElementById(imageNum[i]).src = blankImg;
+                }
+            }
+            function randomImageArray(){
+                var realImageArray = ["images/american.png","images/by_and_by.png","images/cuttin.png","images/hopeful.png","images/purgatory.png","images/universe.png"];
+                var count = new Array(realImageArray.length).fill(0);
+                while(realImages.length < 12){
+                    var randomNumber = Math.floor(Math.random() * realImageArray.length)
+                    if (count[randomNumber] < 2){
+                        realImages.push(realImageArray[randomNumber]);
+                        count[randomNumber] = count[randomNumber] + 1;
+                    }
+                }
+            }
+            function flipImage(number){
+                document.getElementById(imageNum[number]).src = realImages[number];
+            }
+            console.log(realImages);
+            window.onload = showBlankImg;
+        </script>
+    </body>
+</html>
