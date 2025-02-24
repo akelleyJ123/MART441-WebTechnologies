@@ -64,7 +64,7 @@ function getResponse() {
     getPlayerInfo.age = age;
     getPlayerInfo.attempts = attemptNum;
     localStorage.setItem("playerInfo", JSON.stringify(getPlayerInfo));
-    window.location = "gamePage.html";
+    window.location = "../HW6/pages/gamePage.html";
 }
 
 function showResults() {
