@@ -1,0 +1,38 @@
+body {
+    background-color: rgb(4, 176, 107);
+    text-align: center;
+}
+
+.tableBody {
+    display: flex;
+    margin-left: auto;
+    width: 75%;
+}
+
+.gameTitle {
+    text-align: center;
+    font-family: OriginalSurfer-Regular;
+    font-size: 150%;
+    margin-top: -2%;
+}
+
+.tableRow {
+    margin-left: 5px;
+}
+
+.title {
+    font-family: OriginalSurfer-Regular;
+    font-size: 150%;
+}
+
+.form {
+    font-family: OriginalSurfer-Regular;
+}
+
+button {
+    font-family: OriginalSurfer-Regular;
+}
+
+
+
+
