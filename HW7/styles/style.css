@@ -1,0 +1,16 @@
+body {
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+img {
+    max-width: 300px;
+}
+
+#title {
+    text-align: left;
+    position: absolute;
+    margin-left: 5%;
+    margin-top: 5%;
+}

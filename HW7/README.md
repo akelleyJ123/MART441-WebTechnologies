@@ -1,0 +1,3 @@
+This week's assignment wasn't too bad in terms of difficulty. I actually enjoyed using OOP a lot better than the "unstructured" web develeopment we've been doing. It felt a lot cleaner and easier to understand. I didn't have too many issues with debugging this week and everything worked well. 
+
+I chose to focus on the works of one of my favorite artists/graphic designers, Tadanori Yokoo. He has done a lot of music poster work and album covers. His work doesn't necessarily focus on social justice, instead, he often critiques consumerism and mass media especially in post-WW2 Japan when he was making much of his art, though he also takes some stabs at America as well. 
