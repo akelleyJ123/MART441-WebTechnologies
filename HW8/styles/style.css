@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+    background-color: rgb(25, 25, 25);
+}
+
+.images {
+    position: relative;
+}
+
+.text {
+    position:relative; 
+    color: white;  
+}
