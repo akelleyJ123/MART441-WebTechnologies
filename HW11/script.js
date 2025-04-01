@@ -70,7 +70,6 @@ function drawSquare() {
     ctx.fillRect(square2.theX, square2.theY, square2.theWidth, square2.theHeight);
 }
 
-
 $(document).ready(function(){
     $(this).keypress(function(event){
         getKey(event);
