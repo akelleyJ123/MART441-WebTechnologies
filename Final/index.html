@@ -48,12 +48,12 @@
     {
         this.add.image(400, 300, 'sky');
 
-        platform = this.physics.add.sprite(450, 550, 'player');
+        platform = this.physics.add.sprite(450, 525, 'player');
         platform.setScale(.25);
         platform.body.allowGravity = false;
         platform.setCollideWorldBounds(true);
 
-        ground = this.physics.add.sprite(400, 600, 'ground').setScale(2);
+        ground = this.physics.add.sprite(400, 575, 'ground').setScale(2);
         ground.body.allowGravity = false;
 
         cursors = this.input.keyboard.createCursorKeys();
