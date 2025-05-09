@@ -36,12 +36,25 @@
     var platform;
     var cursors;
     var ground;
+    var ball;
+    var balls;
+    var gameOver = false;
+    var score = 0;
+    var scoreText;
+    var scoreEvent;
+    var gameOverText;
+    var sound;
 
     function preload ()
     {
         this.load.image('sky', 'assets/sky.jpg');
         this.load.image('player', 'assets/platform.png');
         this.load.spritesheet('ground', 'assets/ground_animate.png', { frameWidth: 500, frameHeight: 20 });
+        this.load.image('ball', 'assets/Ball.png');
+        this.load.audio('hit', 'assets/ballHit.mp3');
+        this.load.audio('lose', 'assets/gameOverSound.mp3');
+        this.load.audio('wallHit', 'assets/hitWall.mp3');
+        this.load.audio('ballSpawn', 'assets/ballSpawn.mp3');
     }
 
     function create ()
@@ -52,9 +65,31 @@
         platform.setScale(.25);
         platform.body.allowGravity = false;
         platform.setCollideWorldBounds(true);
+        platform.setImmovable(true);
 
         ground = this.physics.add.sprite(400, 575, 'ground').setScale(2);
         ground.body.allowGravity = false;
+        ground.setImmovable(true);
+
+        balls = this.physics.add.group();
+
+        ball = balls.create(Phaser.Math.Between(200, 600), 0, 'ball');
+        ball.setScale(0.5);
+        ball.setCollideWorldBounds(true);
+        ball.body.onWorldBounds = true;
+        ball.setBounce(1);
+        this.physics.world.on('worldbounds', (body, up, down, left, right) => {
+        if (left || right) {
+            this.sound.play('wallHit');
+            }
+        });
+
+        // Add collisions
+        this.physics.add.collider(platform, balls, bounceBall, null, this);
+        this.physics.add.collider(balls, ground, hitground, null, this);
+
+        sound = this;
+
 
         cursors = this.input.keyboard.createCursorKeys();
 
@@ -63,23 +98,68 @@
             frames: this.anims.generateFrameNumbers('ground', {start: 0, end: 6}),
             frameRate: 10
         })
-
+        scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#ffffff' });
+        scoreEvent = this.time.addEvent({
+            delay: 1000,
+            callback: increaseScore,
+            callbackScope: this,
+            loop: true
+        })
     }
 
     function update () {
+        if(gameOver) {
+            return;
+        }
+
         if (cursors.left.isDown) {
-            platform.setVelocityX(-350);
+            platform.setVelocityX(-400);
         }
 
         else if (cursors.right.isDown) {
-            platform.setVelocityX(350);
+            platform.setVelocityX(400);
         }
 
         else {
             platform.setVelocityX(0);
         }
         ground.anims.play('ground-play', true);
+
+        
     }
+
+    function bounceBall(platform, ball) {
+    let diff = ball.x - platform.x;
+    ball.setVelocityX(diff * 5);
+    sound.sound.play('hit');
+    }
+
+    function hitground(ball,ground) {
+        gameOver = true
+        this.physics.pause();
+        sound.sound.play('lose');
+        gameOverText = this.add.text(300, 250, 'Game Over', { fontSize: '60px', fill: '#ff0000'});
+    }
+
+    function increaseScore() {
+    if (!gameOver) {
+        score += 1;
+        scoreText.setText('Score: ' + score);
+
+        // Add a new ball every 10 points, but only if there are fewer than 3 balls
+        if (score % 20 === 0 && balls.countActive(true) < 3) {
+            let newBall = balls.create(Phaser.Math.Between(200, 600), 0, 'ball');
+            newBall.setScale(0.5);
+            newBall.setCollideWorldBounds(true);
+            newBall.body.onWorldBounds = true;
+            newBall.setBounce(1);
+            sound.sound.play('ballSpawn');
+        }
+    }
+}
+
+
+
     </script>
 
 
